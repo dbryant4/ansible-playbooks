@@ -1,0 +1,13 @@
+---
+- hosts: 127.0.0.1
+  gather_facts: False
+  tasks:
+    - name: "Adding {{ host }} to playbook"
+      local_action: "add_host name={{ host }}"
+
+- hosts: "{{ host }}"
+  remote_user: pi
+
+  roles:
+    - common
+    - "{{ role }}"
