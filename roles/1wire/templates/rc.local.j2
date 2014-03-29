@@ -23,6 +23,6 @@ service ntp stop
 ntpdate pool.ntp.org
 service ntp start
 
-nohup python /home/root/pi-temperature-logger/report_temperatures.py &
+nohup python /root/pi-temperature-logger/report_temperatures.py &
 
 exit 0
