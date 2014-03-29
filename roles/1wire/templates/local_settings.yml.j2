@@ -1,4 +1,5 @@
 ---
+# {{ ansible_managed }}
 sleep_time: 30
 log:
   level: DEBUG
@@ -6,3 +7,5 @@ graphite:
   host: {{ graphite_server }}
   device_location: {{ host }}
 sensor_mappings:
+# sensors from /sys/bus/w1/devices
+#  '28-???': 

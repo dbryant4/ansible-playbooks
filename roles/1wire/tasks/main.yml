@@ -14,8 +14,8 @@
 
 - name: pi-temperature-logger config
   template: src=local_settings.yml.j2 dest=/root/pi-temperature-logger/local_settings.yml
-  notify:
-    - add sensors to config
+#  notify:
+#    - add sensors to config
 
 - name: install ntp
   apt: pkg=python-pip state=latest update_cache=yes
