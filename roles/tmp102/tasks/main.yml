@@ -1,0 +1,32 @@
+---
+- name: install system pacakges
+  apt: pkg={{ item }} state=present
+  with_items:
+    - i2c-tools
+    - python-smbus
+    - python-pip
+
+- name: enable modules
+  template: src=modules.j2 dest=/etc/modules
+
+- name: load modules
+  modprobe: name={{ item }} state=present
+  with_items:
+    - i2c-bcm2708
+    - i2c-dev
+
+- name: clone pi-temperature-alerter
+  git: repo=https://github.com/dbryant4/pi-temperature-alerter.git
+       dest={{ script_root }}
+
+- name: pi-temperature-alerter config
+  template: src=local_settings.yml.j2 dest={{ script_root }}/local_settings.yml
+
+- name: install Python packages
+  pip: requirements={{ script_root }}/requirements.py
+
+- name: write the rc.local
+  template: src=rc.local.j2 dest=/etc/rc.local
+
+- name: upgrade machine
+  apt: upgrade=yes

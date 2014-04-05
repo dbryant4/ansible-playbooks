@@ -6,6 +6,7 @@
       local_action: "add_host name={{ host }}"
 
 - hosts: "{{ host }}"
+#  accelerate: true
   remote_user: pi
 
   roles:
