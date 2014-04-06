@@ -25,8 +25,11 @@
 - name: install Python packages
   pip: requirements={{ script_root }}/requirements.py
 
-- name: write the rc.local
-  template: src=rc.local.j2 dest=/etc/rc.local
+- name: install init.d script
+  template: src=init.d.j2 dest=/etc/init.d/monitor_temp owner=root group=root mode=0755
+
+- name: start monitor_temp service
+  service: name=monitor_temp state=started enabled=yes
 
 - name: upgrade machine
   apt: upgrade=yes
