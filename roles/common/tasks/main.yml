@@ -13,11 +13,18 @@
 - name: Install facter gem
   gem: name=facter state=present
 
+- name: Update apt sources
+  command: "/usr/bin/apt-get update"
+
 - name: "Install python-apt"
   command: "/usr/bin/apt-get -y install python-apt creates=/usr/share/doc/python-apt"
 
-- name: install ntp
-  apt: pkg=ntp state=latest update_cache=yes
+- name: install common packages
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - screen
+    - vim
+    - ntp
 
 - name: write the ntp.conf
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
@@ -26,6 +33,12 @@
 
 - name: write the rc.local
   template: src=rc.local.j2 dest=/etc/rc.local
+
+- name: installing .screenrc
+  template: src=screenrc.j2 dest={{ item }}/.screenrc
+  with_items:
+    - /home/pi
+    - /root
 
 - name: "set hostname to {{ hostname }}"
   hostname: "name={{ hostname }}"
