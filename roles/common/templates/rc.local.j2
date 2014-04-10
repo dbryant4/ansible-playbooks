@@ -1,8 +1,8 @@
 #!/bin/sh -e
 #
-# {{ ansible_managed }}
-#
 # rc.local
+#
+# {{ ansible_managed }}
 #
 # This script is executed at the end of each multiuser runlevel.
 # Make sure that the script will "exit 0" on success or any other
@@ -18,9 +18,5 @@ _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
-
-service ntp stop
-ntpdate pool.ntp.org
-service ntp start
 
 exit 0

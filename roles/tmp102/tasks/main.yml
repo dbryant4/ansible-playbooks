@@ -1,5 +1,5 @@
 ---
-- name: install system pacakges
+- name: install system packages
   apt: pkg={{ item }} state=present
   with_items:
     - i2c-tools

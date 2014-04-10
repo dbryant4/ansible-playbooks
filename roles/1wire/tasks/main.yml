@@ -2,29 +2,30 @@
 - name: enable modules
   template: src=modules.j2 dest=/etc/modules
 
-- name: load module w1-gpio
-  modprobe: name=w1-gpio state=present
-
-- name: load module w1-therm
-  modprobe: name=w1-therm state=present
+- name: load modules
+  modprobe: name={{ item }} state=present
+  with_items:
+    - w1-gpio
+    - w1-therm
 
 - name: clone pi-temperature-logger
   git: repo=https://github.com/dbryant4/pi-temperature-logger.git
-       dest=/root/pi-temperature-logger
+       "dest={{ script_root }}"
 
 - name: pi-temperature-logger config
-  template: src=local_settings.yml.j2 dest=/root/pi-temperature-logger/local_settings.yml
-#  notify:
-#    - add sensors to config
+  template: "src=local_settings.yml.j2 dest={{ script_root }}/local_settings.yml"
 
 - name: install ntp
   apt: pkg=python-pip state=latest update_cache=yes
 
 - name: install Python packages
-  pip: requirements=/root/pi-temperature-logger/requirements.txt
+  pip: "requirements={{ script_root }}/requirements.txt"
 
-- name: write the rc.local
-  template: src=rc.local.j2 dest=/etc/rc.local
+- name: installing the init.d startup script
+  template: src=initd.j2 dest=/etc/init.d/report_temperatures
+
+- name: starting report_temperatures
+  service: name=report_temperatures state=started enabled=yes
 
 - name: upgrade machine
   apt: upgrade=yes

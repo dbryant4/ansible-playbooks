@@ -1,9 +1,1 @@
 ---
-- name: restart network
-  service: name=network state=restarted
-
-- name: reboot pi
-  command: /sbin/reboot
-
-- name: add sensors to config
-  command: 'for i in $(ls /sys/bus/w1/devices | grep 28); do echo "  $i: $i" >> {{ temperature_script_root }}/local_settings.yml; done'
