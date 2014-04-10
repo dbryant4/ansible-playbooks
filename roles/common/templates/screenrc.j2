@@ -1,20 +1,10 @@
-screen -t rtorrent rtorrent
-screen -t irssi irssi
-screen -t centerim centerim
-screen -t ncmpc ncmpc -c
-screen -t bash4
-screen -t bash5
-screen -t bash6
-screen -t bash7
-screen -t bash8
-screen -t bash9
-altscreen on
-term screen-256color
-bind ',' prev
-bind '.' next
-
-#change the hardstatus settings to give an window list at the bottom of the                                                                        
-#screen, with the time and date and with the current window highlighted                                                                            
+# Turn off that annoying start up message
+startup_message off
+ 
+# Turn the even more annoying whole-screen-flash-on-tab-complete "feature"
+vbell off
+ 
+# Window list at the bottom. hostname, centered tabs and redmarked active windows:
 hardstatus alwayslastline
-#hardstatus string '%{= kG}%-Lw%{= kW}%50> %n%f* %t%{= kG}%+Lw%< %{= kG}%-=%c:%s%{-}'
-hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
