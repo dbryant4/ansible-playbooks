@@ -6,6 +6,12 @@
     - python-smbus
     - python-pip
 
+- name: Removing modules from blacklist
+  kernel_blacklist: name={{ item }} state=absent
+  with_items:
+    - i2c-bcm2708
+    - i2c-dev
+
 - name: enable modules
   template: src=modules.j2 dest=/etc/modules
 
