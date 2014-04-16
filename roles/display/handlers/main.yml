@@ -1,6 +1,6 @@
 ---
 - name: restart network
-  service: name=networking state=restarted
+  service: name=network state=restarted
 
 - name: restart ntp
   service: name=ntp state=restarted

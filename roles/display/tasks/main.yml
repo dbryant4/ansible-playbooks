@@ -1,0 +1,30 @@
+---
+- name: enable desktop
+  service: name=lightdm enabled=yes state=started
+
+- name: setting user pi to auto-login
+  command: '/bin/sed /etc/lightdm/lightdm.conf -i -e "s/^#autologin-user=.*/autologin-user=pi/"'
+
+- name: install chromium and friends
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - 'chromium-browser'
+    - 'x11-xserver-utils'
+    - 'unclutter'
+    - 'x11vnc'
+
+- file: path=/home/pi/.vnc owner=pi group=pi state=directory mode=0755 recurse=yes
+
+- name: creating vnc password file
+  copy: src=passwd dest=/home/pi/.vnc/passwd owner=pi group=pi mode=0600
+
+- file: path=/home/pi/.config/autostart owner=pi group=pi state=directory mode=0755 recurse=yes
+
+- name: autostarting vnc server
+  copy: src=x11vnc.desktop dest=/home/pi/.config/autostart/x11vnc.desktop owner=pi group=pi
+
+- name: setting chromium to autostart
+  template: src=autostart.j2 dest=/etc/xdg/lxsession/LXDE/autostart mode=644 owner=root group=root
+
+- name: install boot config
+  template: src=boot_config.j2 dest=/boot/config.txt

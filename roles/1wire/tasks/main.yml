@@ -30,5 +30,5 @@
 - name: starting report_temperatures
   service: name=report_temperatures state=started enabled=yes
 
-- name: upgrade machine
-  apt: upgrade=yes
+#- name: upgrade machine
+#  apt: upgrade=yes
