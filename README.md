@@ -10,3 +10,10 @@ To deploy a raspberry Pi, run the command below. After the first run, you can re
 ```
 ansible-playbook -i hosts site.yml --extra-vars "host=192.168.101.125 hostname=devpi1 role=1wire" -k --sudo
 ```
+
+## Roles
+Currentlty there are three roles which are listed below.
+
+-  1wire - sets up 1-wire temperature sensors to colelct temperature readings and send that information back to a grphite server
+-  tmp102 - sets up the pi to collect data from a tmp102 temperature sensor to send back to a grpahite server
+-  display - sets up a pi to start up the desktop and run chromium with a specific URL. This is designed for display boards. Also, this role installs a vnc server for easy management
