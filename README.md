@@ -20,3 +20,4 @@ Currentlty there are three roles which are listed below.
 
 ## Variables
 -  skip_update - Skips the apt-get update call in the common role
+-  hostname - if this is provide, the hostname will be set on the node
