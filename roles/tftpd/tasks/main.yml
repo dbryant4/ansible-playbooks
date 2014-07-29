@@ -1,0 +1,17 @@
+---
+- name: install TFTPd packages
+  apt: pkg={{ item }} state=present
+  with_items:
+    - xinetd
+    - tftpd
+    - tftp
+
+- name: write the tftp configuration
+  template: src=tftp.j2 dest=/etc/xinetd.d/tftp backup=yes
+  notify:
+    - restart xinetd
+
+- file: path=/tftpboot owner=nobody mode=0777 state=directory
+
+- name: ensure xinetd enabled
+  service: name=xinetd enabled=yes state=started
