@@ -2,10 +2,22 @@
 auto lo
 
 iface lo inet loopback
-iface eth0 inet dhcp
 
+{% if ansible_eth0.active == True %}
+iface eth0 inet static
+address {{ ansible_eth0.ipv4.address }}
+netmask {{ ansible_eth0.ipv4.netmask }}
+network {{ ansible_eth0.ipv4.network }}
+gateway {{ ansible_default_ipv4.gateway }}
+
+{% else %}
+iface eth0 inet dhcp
+{% endif %}
+
+{% if ansible_interfaces.wlan0 is defined %}
 allow-hotplug wlan0
 iface wlan0 inet manual
 wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
 iface default inet dhcp
 wireless-power off
+{% endif %}
