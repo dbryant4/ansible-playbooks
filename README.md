@@ -17,3 +17,6 @@ Currentlty there are three roles which are listed below.
 -  1wire - sets up 1-wire temperature sensors to colelct temperature readings and send that information back to a grphite server
 -  tmp102 - sets up the pi to collect data from a tmp102 temperature sensor to send back to a grpahite server
 -  display - sets up a pi to start up the desktop and run chromium with a specific URL. This is designed for display boards. Also, this role installs a vnc server for easy management
+
+## Variables
+-  skip_update - Skips the apt-get update call in the common role
