@@ -1,0 +1,17 @@
+---
+static_hosts:
+  - name: tvpc
+    mac: '8C:89:A5:1B:64:94'
+    ip: 192.168.101.112
+  - name: serverpi
+    mac: 'B8:27:EB:8E:DC:3C'
+    ip: 192.168.101.119
+  - name: chilli
+    mac: '00:90:A9:3A:3A:5B'
+    ip: 192.168.101.111
+  - name: firecloset
+    mac: '80:1F:02:D3:7B:0E'
+    ip: 192.168.101.120
+  - name: temperature1
+    mac: '80:1F:02:DA:86:BF'
+    ip: 192.168.101.122
