@@ -7,11 +7,16 @@ option broadcast-address 192.168.101.255;
 option routers 192.168.101.252;
 option domain-name-servers 192.168.101.252;
 option domain-search "derricklbryant.com";
+ddns-update-style interim;
+update-static-leases on;
 
 subnet 192.168.101.0 netmask 255.255.255.0 {
    range 192.168.101.100 192.168.101.150;
    filename "pxelinux.0";
    next-server {{ ansible_default_ipv4.address }};
+
+   option domain-name "home";
+   ddns-domainname "home";
 }
 
 {% for host in static_hosts %}
@@ -19,6 +24,7 @@ host {{ host.name }} {
    option host-name "{{ host.name }}";
    hardware ethernet {{ host.mac }};
    fixed-address {{ host.ip }};
+   ddns-hostname "{{ host.name }}";
 }
 
 {% endfor %}
