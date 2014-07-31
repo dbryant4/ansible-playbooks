@@ -20,7 +20,7 @@ label linux
 	There is no kickstart.
   endtext
   kernel centos/7/x86_64/vmlinuz
-  append initrd=centos/7/x86_64/initrd.img method={{ ks_method }} devfs=nomount ip=dhcp ksdevice=eth0 lang=en_US keymap=us text
+  append initrd=centos/7/x86_64/initrd.img method={{ ks_method }} devfs=nomount lang=en_US keymap=us text
 
 # utilities submenu
 menu begin ^Troubleshooting
