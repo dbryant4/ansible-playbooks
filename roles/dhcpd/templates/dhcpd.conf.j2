@@ -5,18 +5,35 @@ max-lease-time 7200;
 option subnet-mask 255.255.255.0;
 option broadcast-address 192.168.101.255;
 option routers 192.168.101.252;
-option domain-name-servers 192.168.101.252;
-option domain-search "derricklbryant.com";
+option domain-name-servers {{ ansible_default_ipv4.address }};
+option domain-search "{{ domain }}";
+
+{% if dnssec_key is defined %}
 ddns-update-style interim;
 update-static-leases on;
+option domain-name "{{ domain }}";
+ddns-domainname "{{ domain }}";
+
+key dhcpupdate {
+  algorithm hmac-md5;
+  secret {{ dnssec_key }};
+}
+
+zone 101.168.192.in-addr.arpa {
+  primary {{ ddns_server }};
+  key dhcpupdate;
+}
+
+zone home {
+  primary {{ ddns_server }};
+  key dhcpupdate;
+}
+{% endif %}
 
 subnet 192.168.101.0 netmask 255.255.255.0 {
    range 192.168.101.100 192.168.101.150;
    filename "pxelinux.0";
    next-server {{ ansible_default_ipv4.address }};
-
-   option domain-name "home";
-   ddns-domainname "home";
 }
 
 {% for host in static_hosts %}

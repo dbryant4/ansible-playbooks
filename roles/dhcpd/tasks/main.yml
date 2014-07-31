@@ -4,6 +4,9 @@
   with_items:
     - isc-dhcp-server
 
+- set_fact: dnssec_key="{{ansible_local.dnssec.key}}"
+  when: ansible_local is defined and ansible_local.dnssec.key is defined
+
 - name: write the dhcpd.conf
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf backup=yes
   notify:

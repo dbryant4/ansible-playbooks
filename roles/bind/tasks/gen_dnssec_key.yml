@@ -1,0 +1,10 @@
+---
+- command: "dnssec-keygen -K /etc/bind -a hmac-md5 -b 128 -n USER dhcpupdate"
+  register: key_result
+
+- shell: "cat /etc/bind/{{ key_result.stdout }}.key | awk '{ print $7 }'"
+  register: key
+
+- file: path=/etc/ansible/facts.d state=directory recurse=yes
+
+- template: src=dnssec.fact.j2 dest=/etc/ansible/facts.d/dnssec.fact mode=0644

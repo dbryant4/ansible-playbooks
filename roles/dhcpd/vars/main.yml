@@ -15,3 +15,6 @@ static_hosts:
   - name: temperature1
     mac: '80:1F:02:DA:86:BF'
     ip: 192.168.101.122
+ddns_server: localhost
+domain: home
+
