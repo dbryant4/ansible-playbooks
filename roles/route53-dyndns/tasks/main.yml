@@ -1,0 +1,17 @@
+---
+- name: install cron packages
+  apt: pkg={{ item }} state=present
+  with_items:
+    - cron
+
+- name: Clone route-53-dyndns
+  git: repo=https://github.com/JacobSanford/route-53-dyndns.git
+       dest=/root/route-53-dyndns
+
+- name: write the cron file
+  template: src=route53-dyndns.j2 dest=/etc/cron.hourly/route53-dyndns mode=755 owner=root
+  notify:
+    - restart cron
+
+- name: ensure cron enabled
+  service: name=cron enabled=yes state=started
