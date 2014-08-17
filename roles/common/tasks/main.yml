@@ -11,6 +11,10 @@
 - name: Install facter gem
   gem: name=facter state=present
 
+- name: "Setting up apt proxy client"
+  template: src=02proxy.j2 dest=/etc/apt/apt.conf.d/02proxy
+  when: "apt-cache is defined"
+
 - name: Update apt sources
   command: "/usr/bin/apt-get update"
   when: skip_update == false
@@ -32,6 +36,7 @@
 
 - name: write the rc.local
   template: src=rc.local.j2 dest=/etc/rc.local
+  when: skip_rc_local is not defined
 
 - name: installing .screenrc
   template: src=screenrc.j2 dest={{ item }}/.screenrc

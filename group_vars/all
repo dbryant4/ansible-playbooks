@@ -1,2 +1,5 @@
 ---
 remote_user: pi
+apt-cache:
+  host:'serverpi.home'
+  port:3142
