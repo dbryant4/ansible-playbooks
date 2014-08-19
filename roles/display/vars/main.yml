@@ -1,6 +1,4 @@
 ---
-rotate_display: true
+rotate_display: false
 chromium_urls:
-  - "http://google.com"
-  - "http://yahoo.com"
-  - "http://bing.com"
+  - "http://dashboard.derricklbryant.com:3030/transittv?page=1"

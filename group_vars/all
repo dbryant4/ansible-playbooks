@@ -1,5 +1,5 @@
 ---
 remote_user: pi
 apt-cache:
-  host:'serverpi.home'
+  host:'tvlaptop.home'
   port:3142
