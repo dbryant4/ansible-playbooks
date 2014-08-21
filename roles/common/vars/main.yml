@@ -1,3 +1,6 @@
 ---
 skip_update: false
 hostname: false
+apt_cache:
+  host: 'tvlaptop.home'
+  port: 3142
