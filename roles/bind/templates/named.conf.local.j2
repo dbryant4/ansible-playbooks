@@ -16,10 +16,12 @@ zone "home" {
   type master;
   file "/etc/bind/db.home";
   allow-update { key dhcpupdate; };
+  notify yes;
 };
 
 zone "101.168.192.in-addr.arpa" {
   type master;
   file "/etc/bind/db.home_rev";
   allow-update { key dhcpupdate; };
+  notify yes;
 };
