@@ -9,6 +9,7 @@ option domain-name-servers {{ ansible_default_ipv4.address }};
 option domain-search "{{ domain }}";
 
 {% if dnssec_key is defined %}
+allow client-updates;
 ddns-update-style interim;
 update-static-leases on;
 option domain-name "{{ domain }}";
