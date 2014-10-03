@@ -5,4 +5,4 @@
   vars:
     remote_user: travis
   roles:
-    - common
+    - display

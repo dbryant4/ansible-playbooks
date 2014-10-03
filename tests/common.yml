@@ -4,5 +4,6 @@
   remote_user: travis
   vars:
     remote_user: travis
+    skip_update: true
   roles:
     - common
