@@ -4,6 +4,7 @@ python: "2.7"
 
 env:
   - SITE=common.yml
+  - SITE=display.yml
 
 before_install:
   - sudo apt-get update -qq
@@ -26,6 +27,7 @@ script:
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
     ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo
+    | tee /dev/tty
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
