@@ -11,6 +11,8 @@ before_install:
 
   # Add ansible.cfg to pick up roles path.
   - "printf '[defaults]\nroles_path = roles/' > ansible.cfg"
+  - "echo 'exit 0' > /etc/init.d/lightdm"
+  - "chmod 755 /etc/init.d/lightdm"
 
 install:
   # Install Ansible.
