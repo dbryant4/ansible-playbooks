@@ -3,11 +3,14 @@ language: python
 python: "2.7"
 
 env:
-  - SITE=common.yml ANSIBLE_ROLES_PATH=../../
+  - SITE=common.yml
 
 before_install:
   # Make sure everything's up to date.
   - sudo apt-get update -qq
+
+  # Add ansible.cfg to pick up roles path.
+  - "printf '[defaults]\nroles_path = ../' > ansible.cfg"
 
 install:
   # Install Ansible.
