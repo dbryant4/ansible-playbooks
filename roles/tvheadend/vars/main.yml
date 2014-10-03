@@ -1,7 +1,0 @@
----
-rotate_display: true
-chromium_urls:
-  - "http://google.com"
-  - "http://yahoo.com"
-  - "http://bing.com"
-
