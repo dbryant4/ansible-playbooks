@@ -3,10 +3,7 @@ language: python
 python: "2.7"
 
 env:
-  - SITE=common.yml
-
-before_script:
-  - export ANSIBLE_ROLES_PATH=../
+  - SITE=common.yml ANSIBLE_ROLES_PATH=../
 
 before_install:
   # Make sure everything's up to date.
