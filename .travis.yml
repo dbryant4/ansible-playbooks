@@ -14,6 +14,7 @@ before_install:
 install:
   # Install Ansible.
   - pip install ansible
+  - sudo apt-get install rubygems
 
 script:
   # Check the role/playbook's syntax.
