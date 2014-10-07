@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  sudo: yes
+  remote_user: travis
+  vars:
+    remote_user: travis
+  roles:
+    - tftpd
