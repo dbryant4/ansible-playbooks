@@ -8,11 +8,10 @@ env:
 
 before_install:
   - sudo apt-get update -qq
+  - sudo apt-get install lightdm
 
   # Add ansible.cfg to pick up roles path.
   - "printf '[defaults]\nroles_path = roles/' > ansible.cfg"
-  - "sudo echo 'exit 0' > /etc/init.d/lightdm"
-  - "sudo chmod 755 /etc/init.d/lightdm"
 
 install:
   # Install Ansible.
