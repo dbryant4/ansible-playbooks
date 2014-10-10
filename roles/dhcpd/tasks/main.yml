@@ -10,10 +10,8 @@
 - name: write the dhcpd.conf
   template: src=dhcpd.conf.j2 dest=/etc/dhcp/dhcpd.conf backup=yes
   notify:
+    - validate dhcpd.conf
     - restart dhcpd
-
-- name: validate dhcpd.conf
-  command: /usr/sbin/dhcpd -t
 
 - name: ensure dhcpd enabled
   service: name=isc-dhcp-server enabled=yes state=started
