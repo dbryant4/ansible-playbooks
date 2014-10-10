@@ -18,10 +18,10 @@
 - template: src=default.j2 dest='{{ tftpboot_dir }}/pxelinux.cfg/default' mode=0666
 
 - file: path='{{ tftpboot_dir }}/centos/7/x86_64/' mode=0777 state=directory recurse=yes
-- get_url: url='{{ centos_mirror }}/isolinux/vmlinuz' dest='{{ tftpboot_dir }}/centos/7/x86_64/vmlinuz'
-- get_url: url='{{ centos_mirror }}/isolinux/initrd.img' dest='{{ tftpboot_dir }}/centos/7/x86_64/initrd.img'
-- get_url: url='{{ centos_mirror }}/vesamenu.c32' dest='{{ tftpboot_dir }}/vesamenu.c32' mode=0666
-- get_url: url='{{ centos_mirror }}/isolinux/memtest' dest='{{ tftpboot_dir }}/memtest' mode=0666
+- get_url: url='{{ centos_mirror }}isolinux/vmlinuz' dest='{{ tftpboot_dir }}/centos/7/x86_64/vmlinuz'
+- get_url: url='{{ centos_mirror }}isolinux/initrd.img' dest='{{ tftpboot_dir }}/centos/7/x86_64/initrd.img'
+- get_url: url='{{ centos_mirror }}isolinux/vesamenu.c32' dest='{{ tftpboot_dir }}/vesamenu.c32' mode=0666
+- get_url: url='{{ centos_mirror }}isolinux/memtest' dest='{{ tftpboot_dir }}/memtest' mode=0666
 
 - name: ensure xinetd enabled
   service: name=xinetd enabled=yes state=started
