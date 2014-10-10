@@ -4,5 +4,8 @@
   remote_user: travis
   vars:
     remote_user: travis
+    ansible_local:
+      dnssec:
+        key: abc1234
   roles:
     - dhcpd

@@ -15,8 +15,6 @@ before_install:
 
   # Add ansible.cfg to pick up roles path.
   - "printf '[defaults]\nroles_path = roles/' > ansible.cfg"
-  - sudo mkdir -p /etc/ansible/facts.d/
-  - "printf 'key=12345}' > /etc/ansible/facts.d/dnssec.fact"
 
 install:
   # Install Ansible.
