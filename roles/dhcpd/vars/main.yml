@@ -9,12 +9,6 @@ static_hosts:
   - name: chilli
     mac: '00:90:A9:3A:3A:5B'
     ip: 192.168.101.111
-  - name: firecloset
-    mac: '80:1F:02:D3:7B:0E'
-    ip: 192.168.101.120
-  - name: temperature1
-    mac: '80:1F:02:DA:86:BF'
-    ip: 192.168.101.122
 ddns_server: localhost
 domain: home
 
