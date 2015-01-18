@@ -1,0 +1,7 @@
+---
+graphite_server: "metrics.derricklbryant.com"
+script_root: '/root/pi-temperature-alerter'
+
+device_location: 'dining area'
+aws_key_id: 'aws_key_id_here'
+aws_secret_key: 'aws_secret_key_here'
