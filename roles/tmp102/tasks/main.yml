@@ -27,6 +27,8 @@
 
 - name: pi-temperature-alerter config
   template: src=local_settings.yml.j2 dest={{ script_root }}/local_settings.yml
+  notify:
+    - restart monitor_temp
 
 - name: install Python packages
   pip: requirements={{ script_root }}/requirements.py
