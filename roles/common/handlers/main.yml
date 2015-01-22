@@ -2,8 +2,5 @@
 - name: restart network
   service: name=networking state=restarted
 
-- name: restart ntp
-  service: name=ntp state=restarted
-
 - name: reboot pi
   command: /sbin/reboot

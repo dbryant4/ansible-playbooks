@@ -27,13 +27,7 @@
   with_items:
     - screen
     - vim
-    - ntp
     - python-pip
-
-- name: write the ntp.conf
-  template: src=ntp.conf.j2 dest=/etc/ntp.conf
-  notify:
-    - restart ntp
 
 - name: write the rc.local
   template: src=rc.local.j2 dest=/etc/rc.local
