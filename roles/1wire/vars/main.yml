@@ -1,3 +1,0 @@
----
-graphite_server: "metrics.derricklbryant.com"
-script_root: '/root/pi-temperature-logger'

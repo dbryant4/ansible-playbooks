@@ -1,6 +1,0 @@
----
-- name: restart dhcpd
-  service: name=isc-dhcp-server state=restarted
-
-- name: validate dhcpd.conf
-  command: /usr/sbin/dhcpd -t
